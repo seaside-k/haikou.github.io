@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft海口镇 - 官方宣传网站</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a3c6e;
+        }
+        
+        /* 政府网站风格顶部条 */
+        .top-bar {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* 导航栏 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a3c6e;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #1a3c6e;
+        }
+        
+        .nav-links a.active {
+            color: #1a3c6e;
+            font-weight: bold;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: #1a3c6e;
+            bottom: -5px;
+            left: 0;
+        }
+        
+        /* 轮播图 */
+        .banner {
+            background: linear-gradient(rgba(26, 60, 110, 0.8), rgba(26, 60, 110, 0.8)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .banner-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .banner h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* 公告部分 */
+        .announcement {
+            background-color: white;
+            border-left: 5px solid #1a3c6e;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .announcement h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .announcement h3 i {
+            margin-right: 10px;
+            color: #e74c3c;
+        }
+        
+        .announcement-list {
+            list-style: none;
+        }
+        
+        .announcement-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .announcement-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .announcement-list a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .announcement-list a:hover {
+            color: #1a3c6e;
+        }
+        
+        /* 网格布局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        /* 景点卡片 */
+        .attraction-card .card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .attraction-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .attraction-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        /* 时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #1a3c6e;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #1a3c6e;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #1a3c6e;
+            margin-bottom: 5px;
+        }
+        
+        /* 政策列表 */
+        .policy-list {
+            list-style: none;
+        }
+        
+        .policy-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .policy-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .policy-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #1a3c6e;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        
+        .entertainment-notice {
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* 图标样式 */
+        .icon-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .icon-box i {
+            font-size: 24px;
+            color: #1a3c6e;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部条 -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div>Minecraft海口镇官方门户网站</div>
+                <div>服务时间：方块世界时间 8:00-18:00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMWEzYzZlIiBkPSJNNDQ4IDk2YzAtMzUuMy0yOC43LTY0LTY0LTY0SDY0QzI4LjcgMzIgMCA2MC43IDAgOTZ2MzIwYzAgMzUuMyAyOC43IDY0IDY0IDY0aDMyMGMzNS4zIDAgNjQtMjguNyA2NC02NFY5NnpNMTI4IDI1NkMxMjggMjM0LjkgMTQ2LjkgMjE2IDE2OCAyMTZzNDAgMTguOSA0MCA0MHMtMTguOSA0MC00MCA0MC00MC0xOC45LTQwLTQwek0zODQgNDQ4SDY0Yy04LjggMC0xNi03LjItMTYtMTZWMTYwaDgwdjExMmMwIDIyLjEgMTguOSA0MCA0MCA0MHM0MC0xOC45IDQwLTQwVjE2MGg0MHYxMTJjMCAyMi4xIDE4LjkgNDAgNDAgNDBzNDAtMTguOSA0MC00MFYxNjBoNDB2MjcyYzAgOC44LTcuMiAxNi0xNiAxNnoiLz48L3N2Zz4=" alt="海口镇徽标">
+                    <div class="logo-text">海口镇人民政府</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">镇情介绍</a></li>
+                    <li><a href="#">政务公开</a></li>
+                    <li><a href="#">政策法规</a></li>
+                    <li><a href="#">公共服务</a></li>
+                    <li><a href="#">互动交流</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 轮播图 -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <h1>欢迎来到Minecraft海口镇</h1>
+                <p>一个融合传统与现代的方块世界海滨小镇</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <main class="container">
+        <!-- 公告部分 -->
+        <section>
+            <div class="announcement">
+                <h3><i class="fas fa-bullhorn"></i> 最新公告</h3>
+                <ul class="announcement-list">
+                    <li><a href="#">关于举办"方块建筑大赛"的通知</a> <span style="float: right; color: #999;">2023-10-15</span></li>
+                    <li><a href="#">海口镇新区规划方案公示</a> <span style="float: right; color: #999;">2023-10-10</span></li>
+                    <li><a href="#">关于维护服务器稳定运行的公告</a> <span style="float: right; color: #999;">2023-10-05</span></li>
+                    <li><a href="#">海口镇居民积分奖励制度实施办法</a> <span style="float: right; color: #999;">2023-09-28</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 景点宣传 -->
+        <section>
+            <h2 style="text-align: center; margin-bottom: 40px;">海口镇特色景点</h2>
+            <div class="grid">
+                <div class="card attraction-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="海口灯塔">
+                    </div>
+                    <div class="card-body">
+                        <h3>海口灯塔</h3>
+                        <p>海口镇标志性建筑，建于方块历202年，为往来船只提供导航。塔高64格，是观赏日落的绝佳地点。</p>
+                    </div>
+                </div>
+                <div class="card attraction-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="方块广场">
+                    </div>
+                    <div class="card-body">
+                        <h3>方块广场</h3>
+                        <p>海口镇中心广场，周围环绕着各类商店和市政建筑。每周日在此举办集市，是居民交流的重要场所。</p>
+                    </div>
+                </div>
+                <div class="card attraction-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="金色沙滩">
+                    </div>
+                    <div class="card-body">
+                        <h3>金色沙滩</h3>
+                        <p>海口镇最长的天然沙滩，沙质细腻，是游泳、日光浴和建造沙堡的理想场所。夏季夜晚还会举办篝火晚会。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 时间宣传 -->
+        <section>
+            <h2 style="text-align: center; margin-bottom: 40px;">近期活动安排</h2>
+            <div class="card">
+                <div class="card-header">海口镇活动时间表</div>
+                <div class="card-body">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">方块历203年10月20日</div>
+                            <div class="timeline-content">
+                                <h4>秋季建筑大赛</h4>
+                                <p>主题："未来城市"，地点：新区规划区，时间：全天</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">方块历203年10月25日</div>
+                            <div class="timeline-content">
+                                <h4>红石技术交流会</h4>
+                                <p>分享最新红石机械设计，地点：市政厅会议室，时间：14:00-17:00</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">方块历203年11月1日</div>
+                            <div class="timeline-content">
+                                <h4>万圣节特别活动</h4>
+                                <p>怪物装扮游行与南瓜雕刻比赛，地点：方块广场，时间：18:00-22:00</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">方块历203年11月10日</div>
+                            <div class="timeline-content">
+                                <h4>新区开放仪式</h4>
+                                <p>海口镇新区正式对外开放，地点：新区入口，时间：10:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 政策宣传 -->
+        <section>
+            <h2 style="text-align: center; margin-bottom: 40px;">政策法规</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">建筑规范</div>
+                    <div class="card-body">
+                        <ul class="policy-list">
+                            <li>
+                                <div class="policy-title">建筑高度限制</div>
+                                <div>居民区建筑不得超过32格，商业区建筑不得超过48格。</div>
+                            </li>
+                            <li>
+                                <div class="policy-title">建筑材料要求</div>
+                                <div>主要建筑立面必须使用石质材料，禁止使用泥土作为外墙材料。</div>
+                            </li>
+                            <li>
+                                <div class="policy-title">红石设备管理</div>
+                                <div>大型红石设备需提前申请，不得影响周边居民正常生活。</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">土地管理</div>
+                    <div class="card-body">
+                        <ul class="policy-list">
+                            <li>
+                                <div class="policy-title">土地申请流程</div>
+                                <div>新居民需提交建筑规划图，经审核通过后方可分配土地。</div>
+                            </li>
+                            <li>
+                                <div class="policy-title">公共区域保护</div>
+                                <div>禁止在公共区域私自建造，违者将面临罚款和拆除。</div>
+                            </li>
+                            <li>
+                                <div class="policy-title">地下空间利用</div>
+                                <div>地下建筑深度不得超过16格，需保留地面自然景观。</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">社区服务</div>
+                    <div class="card-body">
+                        <div class="icon-box">
+                            <i class="fas fa-home"></i>
+                            <div>新居民安置服务：提供基础建材包和土地指导</div>
+                        </div>
+                        <div class="icon-box">
+                            <i class="fas fa-tools"></i>
+                            <div>建筑咨询服务：专业建筑师提供设计建议</div>
+                        </div>
+                        <div class="icon-box">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>安全防护：定期巡逻，防止怪物入侵居民区</div>
+                        </div>
+                        <div class="icon-box">
+                            <i class="fas fa-handshake"></i>
+                            <div>社区活动：定期组织各类交流与竞赛活动</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">海口镇简介</a></li>
+                        <li><a href="#">镇政府机构</a></li>
+                        <li><a href="#">领导介绍</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>政务服务</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">政策文件</a></li>
+                        <li><a href="#">办事指南</a></li>
+                        <li><a href="#">土地申请</a></li>
+                        <li><a href="#">建筑审批</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>互动交流</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">镇长信箱</a></li>
+                        <li><a href="#">意见征集</a></li>
+                        <li><a href="#">网上调查</a></li>
+                        <li><a href="#">社区论坛</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关注我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">官方服务器IP</a></li>
+                        <li><a href="#">Discord社区</a></li>
+                        <li><a href="#">方块世界论坛</a></li>
+                        <li><a href="#">YouTube频道</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright © 2023 Minecraft海口镇人民政府 版权所有</p>
+                <p>方块世界坐标：X: 1250, Z: -340 | 服务器版本：1.19.2</p>
+                <div class="entertainment-notice">本网站内容纯属虚构，仅供娱乐</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航栏激活状态
+            const currentPage = window.location.href;
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.href === currentPage) {
+                    link.classList.add('active');
+                }
+                
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // 卡片悬停效果增强
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+            
+            // 模拟公告更新
+            const announcementList = document.querySelector('.announcement-list');
+            if (announcementList) {
+                setTimeout(() => {
+                    const newItem = document.createElement('li');
+                    newItem.innerHTML = '<a href="#">紧急通知：服务器将于明日凌晨进行维护</a> <span style="float: right; color: #999;">2023-10-18</span>';
+                    announcementList.prepend(newItem);
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
