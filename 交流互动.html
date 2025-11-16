@@ -324,6 +324,60 @@
             margin-top: 5px;
         }
         
+        /* Giscus评论样式 */
+        .giscus-comments {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e1e4e8;
+        }
+        
+        .giscus-comments h3 {
+            color: #1a3c6e;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .comment-notice {
+            background-color: #f8f9fa;
+            border-left: 4px solid #1a3c6e;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .comment-notice p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* 图标盒子样式 */
+        .icon-box {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .icon-box i {
+            font-size: 2rem;
+            color: #1a3c6e;
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+        
+        .icon-box h3 {
+            margin-bottom: 10px;
+            color: #1a3c6e;
+        }
+        
+        .icon-box p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
         /* 页脚 */
         footer {
             background-color: #1a3c6e;
@@ -392,6 +446,16 @@
             .grid {
                 grid-template-columns: 1fr;
             }
+            
+            .icon-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .icon-box i {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
@@ -406,196 +470,183 @@
         </div>
     </div>
 
-<!-- 导航栏 -->
-<header>
-    <div class="container">
-        <nav>
-            <div class="logo">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMWEzYzZlIiBkPSJNNDQ4IDk2YzAtMzUuMy0yOC43LTY0LTY0LTY0SDY0QzI4LjcgMzIgMCA2MC43IDAgOTZ2MzIwYzAgMzUuMyAyOC43IDY0IDY0IDY0aDMyMGMzNS4zIDAgNjQtMjguNyA2NC02NFY5NnpNMTI4IDI1NkMxMjggMjM0LjkgMTQ2LjkgMjE2IDE2OCAyMTZzNDAgMTguOSA0MCA0MHMtMTguOSA0MC00MCA0MC00MC0xOC45LTQwLTQwek0zODQgNDQ4SDY0Yy04LjggMC0xNi03LjItMTYtMTZWMTYwaDgwdjExMmMwIDIyLjEgMTguOSA0MCA0MCA0MHM0MC0xOC45IDQwLTQwVjE2MGg0MHYxMTJjMCAyMi4xIDE4LjkgNDAgNDAgNDBzNDAtMTguOSA0MC00MFYxNjhoNDB2MjcyYzAgOC44LTcuMiAxNi0xNiAxNnoiLz48L3N2Zz4=" alt="海口镇徽标">
-                <div class="logo-text">海口镇人民政府</div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="关于我们.html">关于我们</a></li>
-                <li><a href="政务服务.html">政务服务</a></li>
-                <li><a href="交流互动.html" class="active">交流互动</a></li>
-            </ul>
-        </nav>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMWEzYzZlIiBkPSJNNDQ4IDk2YzAtMzUuMy0yOC43LTY0LTY0LTY0SDY0QzI4LjcgMzIgMCA2MC43IDAgOTZ2MzIwYzAgMzUuMyAyOC43IDY0IDY0IDY0aDMyMGMzNS4zIDAgNjQtMjguNyA2NC02NFY5NnpNMTI4IDI1NkMxMjggMjM0LjkgMTQ2LjkgMjE2IDE2OCAyMTZzNDAgMTguOSA0MCA0MHMtMTguOSA0MC00MCA0MC00MC0xOC45LTQwLTQwek0zODQgNDQ4SDY0Yy04LjggMC0xNi03LjItMTYtMTZWMTYwaDgwdjExMmMwIDIyLjEgMTguOSA0MCA0MCA0MHM0MC0xOC45IDQwLTQwVjE2MGg0MHYxMTJjMCAyMi4xIDE4LjkgNDAgNDAgNDBzNDAtMTguOSA0MC00MFYxNjhoNDB2MjcyYzAgOC44LTcuMiAxNi0xNiAxNnoiLz48L3N2Zz4=" alt="海口镇徽标">
+                    <div class="logo-text">海口镇人民政府</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="关于我们.html">关于我们</a></li>
+                    <li><a href="政务服务.html">政务服务</a></li>
+                    <li><a href="交流互动.html" class="active">交流互动</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面标题 -->
+    <div class="page-header">
+        <div class="container">
+            <h1>交流互动</h1>
+        </div>
     </div>
-</header>
 
-<!-- 页面标题 -->
-<div class="page-header">
-    <div class="container">
-        <h1>交流互动</h1>
-    </div>
-</div>
-
-<script src="https://giscus.app/client.js"
-        data-repo="seaside-k/haikou.github.io"
-        data-repo-id="R_kgDOQWPXBg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOQWPXBs4Cx10V"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-    
-<!-- 主要内容 -->
-<main class="container">
-    <!-- 镇长信箱 -->
-    <section>
-        <h2>镇长信箱</h2>
-        <div class="card">
-            <div class="card-header">给镇长写信</div>
-            <div class="card-body">
-                <form>
-                    <div class="form-group">
-                        <label for="sender">您的游戏ID</label>
-                        <input type="text" id="sender" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">联系方式（游戏内邮箱或Discord）</label>
-                        <input type="text" id="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="letter-title">信件主题</label>
-                        <input type="text" id="letter-title" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="letter-content">信件内容</label>
-                        <textarea id="letter-content" class="form-control" rows="6" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">发送信件</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- 意见征集 -->
-    <section>
-        <h2>意见征集</h2>
-        <div class="grid">
+    <!-- 主要内容 -->
+    <main class="container">
+        <!-- 向居委提意见 -->
+        <section>
+            <h2>向居委提意见</h2>
             <div class="card">
-                <div class="card-header">当前征集</div>
+                <div class="card-header">居民意见反馈</div>
                 <div class="card-body">
-                    <ul class="forum-list">
-                        <li>
-                            <a href="#">关于新区命名的意见征集</a>
-                            <div class="forum-meta">截止日期：方块历203年11月30日</div>
-                        </li>
-                        <li>
-                            <a href="#">关于举办新年活动的意见征集</a>
-                            <div class="forum-meta">截止日期：方块历203年12月15日</div>
-                        </li>
-                        <li>
-                            <a href="#">关于公共设施建设的意见征集</a>
-                            <div class="forum-meta">截止日期：方块历203年11月20日</div>
-                        </li>
-                    </ul>
+                    <div class="comment-notice">
+                        <p><strong>温馨提示：</strong> 请使用GitHub账号登录后发表意见。您的每一条意见对我们都很重要，我们将认真阅读并及时回复。</p>
+                    </div>
+                    <div class="giscus-comments">
+                        <h3>💬 居民意见与反馈</h3>
+                        <!-- Giscus评论系统将在这里加载 -->
+                        <script src="https://giscus.app/client.js"
+                                data-repo="seaside-k/haikou.github.io"
+                                data-repo-id="R_kgDOQWPXBg"
+                                data-category="Announcements"
+                                data-category-id="DIC_kwDOQWPXBs4Cx10V"
+                                data-mapping="pathname"
+                                data-strict="0"
+                                data-reactions-enabled="1"
+                                data-emit-metadata="0"
+                                data-input-position="top"
+                                data-theme="preferred_color_scheme"
+                                data-lang="zh-CN"
+                                crossorigin="anonymous"
+                                async>
+                        </script>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- 意见征集 -->
+        <section>
+            <h2>意见征集</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">当前征集</div>
+                    <div class="card-body">
+                        <ul class="forum-list">
+                            <li>
+                                <a href="#">关于新区命名的意见征集</a>
+                                <div class="forum-meta">截止日期：方块历203年11月30日</div>
+                            </li>
+                            <li>
+                                <a href="#">关于举办新年活动的意见征集</a>
+                                <div class="forum-meta">截止日期：方块历203年12月15日</div>
+                            </li>
+                            <li>
+                                <a href="#">关于公共设施建设的意见征集</a>
+                                <div class="forum-meta">截止日期：方块历203年11月20日</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">往期征集结果</div>
+                    <div class="card-body">
+                        <ul class="forum-list">
+                            <li>
+                                <a href="#">"海口镇建筑大赛"主题征集结果公布</a>
+                                <div class="forum-meta">发布日期：方块历203年10月5日</div>
+                            </li>
+                            <li>
+                                <a href="#">"社区活动中心"设计征集结果公布</a>
+                                <div class="forum-meta">发布日期：方块历203年9月12日</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 社区论坛 -->
+        <section>
+            <h2>社区论坛</h2>
+            <div class="forum-category">
+                <h3>官方公告</h3>
+                <ul class="forum-list">
+                    <li>
+                        <a href="#">海口镇新区规划方案公示</a>
+                        <div class="forum-meta">发布者：海口镇政府 | 回复：15 | 最后更新：2023-10-10</div>
+                    </li>
+                    <li>
+                        <a href="#">关于维护服务器稳定运行的公告</a>
+                        <div class="forum-meta">发布者：海口镇政府 | 回复：8 | 最后更新：2023-10-05</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="forum-category">
+                <h3>建筑交流</h3>
+                <ul class="forum-list">
+                    <li>
+                        <a href="#">分享我的新中式建筑</a>
+                        <div class="forum-meta">发布者：建筑爱好者 | 回复：25 | 最后更新：2023-10-12</div>
+                    </li>
+                    <li>
+                        <a href="#">红石机关设计讨论</a>
+                        <div class="forum-meta">发布者：红石大师 | 回复：42 | 最后更新：2023-10-11</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="forum-category">
+                <h3>问题反馈</h3>
+                <ul class="forum-list">
+                    <li>
+                        <a href="#">关于农田被破坏的举报</a>
+                        <div class="forum-meta">发布者：农民小王 | 回复：3 | 最后更新：2023-10-09</div>
+                    </li>
+                    <li>
+                        <a href="#">建议增加更多公共照明</a>
+                        <div class="forum-meta">发布者：夜行者 | 回复：12 | 最后更新：2023-10-08</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 关注我们 -->
+        <section>
+            <h2>关注我们</h2>
             <div class="card">
-                <div class="card-header">往期征集结果</div>
+                <div class="card-header">官方服务器信息</div>
                 <div class="card-body">
-                    <ul class="forum-list">
-                        <li>
-                            <a href="#">"海口镇建筑大赛"主题征集结果公布</a>
-                            <div class="forum-meta">发布日期：方块历203年10月5日</div>
-                        </li>
-                        <li>
-                            <a href="#">"社区活动中心"设计征集结果公布</a>
-                            <div class="forum-meta">发布日期：方块历203年9月12日</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 社区论坛 -->
-    <section>
-        <h2>社区论坛</h2>
-        <div class="forum-category">
-            <h3>官方公告</h3>
-            <ul class="forum-list">
-                <li>
-                    <a href="#">海口镇新区规划方案公示</a>
-                    <div class="forum-meta">发布者：海口镇政府 | 回复：15 | 最后更新：2023-10-10</div>
-                </li>
-                <li>
-                    <a href="#">关于维护服务器稳定运行的公告</a>
-                    <div class="forum-meta">发布者：海口镇政府 | 回复：8 | 最后更新：2023-10-05</div>
-                </li>
-            </ul>
-        </div>
-        <div class="forum-category">
-            <h3>建筑交流</h3>
-            <ul class="forum-list">
-                <li>
-                    <a href="#">分享我的新中式建筑</a>
-                    <div class="forum-meta">发布者：建筑爱好者 | 回复：25 | 最后更新：2023-10-12</div>
-                </li>
-                <li>
-                    <a href="#">红石机关设计讨论</a>
-                    <div class="forum-meta">发布者：红石大师 | 回复：42 | 最后更新：2023-10-11</div>
-                </li>
-            </ul>
-        </div>
-        <div class="forum-category">
-            <h3>问题反馈</h3>
-            <ul class="forum-list">
-                <li>
-                    <a href="#">关于农田被破坏的举报</a>
-                    <div class="forum-meta">发布者：农民小王 | 回复：3 | 最后更新：2023-10-09</div>
-                </li>
-                <li>
-                    <a href="#">建议增加更多公共照明</a>
-                    <div class="forum-meta">发布者：夜行者 | 回复：12 | 最后更新：2023-10-08</div>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- 关注我们 -->
-    <section>
-        <h2>关注我们</h2>
-        <div class="card">
-            <div class="card-header">官方服务器信息</div>
-            <div class="card-body">
-                <div class="icon-box">
-                    <i class="fas fa-server"></i>
-                    <div>
-                        <h3>服务器IP</h3>
-                        <p>请见b站</p>
+                    <div class="icon-box">
+                        <i class="fas fa-server"></i>
+                        <div>
+                            <h3>服务器IP</h3>
+                            <p>请见b站</p>
+                        </div>
                     </div>
-                </div>
-                <div class="icon-box">
-                    <i class="fab fa-discord"></i>
-                    <div>
-                      <h3>QQ社区</h3>
-                      <p>加入我们的QQ社区获取最新资讯和与玩家交流</p>
-                      <a href="#" class="btn">点击加入</a>
+                    <div class="icon-box">
+                        <i class="fab fa-discord"></i>
+                        <div>
+                            <h3>QQ社区</h3>
+                            <p>加入我们的QQ社区获取最新资讯和与玩家交流</p>
+                            <a href="#" class="btn">点击加入</a>
+                        </div>
                     </div>
-                </div>
-                <div class="icon-box">
-                    <i class="fas fa-download"></i>
-                    <div>
-                        <h3>资源下载</h3>
-                        <p>下载游戏资源包，获得游戏体验</p>
-                        <a href="#" class="btn">下载资源包</a>
+                    <div class="icon-box">
+                        <i class="fas fa-download"></i>
+                        <div>
+                            <h3>资源下载</h3>
+                            <p>下载游戏资源包，获得游戏体验</p>
+                            <a href="#" class="btn">下载资源包</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 
     <!-- 页脚 -->
     <footer>
@@ -622,7 +673,7 @@
                 <div class="footer-column">
                     <h3>交流互动</h3>
                     <ul class="footer-links">
-                        <li><a href="交流互动.html">镇长信箱</a></li>
+                        <li><a href="交流互动.html">向居委提意见</a></li>
                         <li><a href="交流互动.html">意见征集</a></li>
                         <li><a href="交流互动.html">社区论坛</a></li>
                         <li><a href="交流互动.html">关注我们</a></li>
@@ -631,13 +682,13 @@
                 <div class="footer-column">
                     <h3>关注我们</h3>
                     <ul class="footer-links">
-                      <li><a href="#">服务器IP</a></li>
+                        <li><a href="#">服务器IP</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-              <p>haikou © 2025 Minecraft海口镇人民政府 版权所有 </p>
-<div class="entertainment-notice">本网站内容纯属虚构，仅供娱乐</div>
+                <p>haikou © 2025 Minecraft海口镇人民政府 版权所有</p>
+                <div class="entertainment-notice">本网站内容纯属虚构，仅供娱乐</div>
             </div>
         </div>
     </footer>
@@ -659,21 +710,7 @@
                     this.classList.add('active');
                 });
             });
-            
-            // 表单提交
-            const contactForm = document.querySelector('.contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('感谢您的留言！我们会尽快处理。');
-                    this.reset();
-                });
-            }
         });
     </script>
 </body>
-
 </html>
-
-
-
