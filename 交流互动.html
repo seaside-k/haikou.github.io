@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft海口镇 - 交流互动</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a3c6e;
+        }
+        
+        /* 政府网站风格顶部条 */
+        .top-bar {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* 导航栏 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a3c6e;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #1a3c6e;
+        }
+        
+        .nav-links a.active {
+            color: #1a3c6e;
+            font-weight: bold;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: #1a3c6e;
+            bottom: -5px;
+            left: 0;
+        }
+        
+        /* 页面标题 */
+        .page-header {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            color: white;
+            text-align: center;
+            font-size: 2.2rem;
+        }
+        
+        /* 网格布局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        /* 卡片样式 */
+        .card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        /* 领导介绍 */
+        .leader-card {
+            text-align: center;
+        }
+        
+        .leader-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 3px solid #1a3c6e;
+        }
+        
+        .leader-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .leader-name {
+            font-size: 1.5rem;
+            color: #1a3c6e;
+            margin-bottom: 10px;
+        }
+        
+        .leader-position {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        /* 联系我们表单 */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #1a3c6e;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            background-color: #0f2a4d;
+        }
+        
+        /* 政策文件列表 */
+        .policy-list {
+            list-style: none;
+        }
+        
+        .policy-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .policy-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .policy-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #1a3c6e;
+        }
+        
+        /* 服务流程 */
+        .process-step {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        
+        .step-number {
+            background-color: #1a3c6e;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        /* 论坛样式 */
+        .forum-category {
+            margin-bottom: 30px;
+        }
+        
+        .forum-category h3 {
+            border-bottom: 2px solid #1a3c6e;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .forum-list {
+            list-style: none;
+        }
+        
+        .forum-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .forum-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .forum-list a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .forum-list a:hover {
+            color: #1a3c6e;
+        }
+        
+        .forum-meta {
+            font-size: 14px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        
+        .entertainment-notice {
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部条 -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div>Minecraft海口镇官方门户网站</div>
+                <div>服务时间：方块世界时间 8:00-18:00</div>
+            </div>
+        </div>
+    </div>
+
+<!-- 导航栏 -->
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMWEzYzZlIiBkPSJNNDQ4IDk2YzAtMzUuMy0yOC43LTY0LTY0LTY0SDY0QzI4LjcgMzIgMCA2MC43IDAgOTZ2MzIwYzAgMzUuMyAyOC43IDY0IDY0IDY0aDMyMGMzNS4zIDAgNjQtMjguNyA2NC02NFY5NnpNMTI4IDI1NkMxMjggMjM0LjkgMTQ2LjkgMjE2IDE2OCAyMTZzNDAgMTguOSA0MCA0MHMtMTguOSA0MC00MCA0MC00MC0xOC45LTQwLTQwek0zODQgNDQ4SDY0Yy04LjggMC0xNi03LjItMTYtMTZWMTYwaDgwdjExMmMwIDIyLjEgMTguOSA0MCA0MCA0MHM0MC0xOC45IDQwLTQwVjE2MGg0MHYxMTJjMCAyMi4xIDE4LjkgNDAgNDAgNDBzNDAtMTguOSA0MC00MFYxNjhoNDB2MjcyYzAgOC44LTcuMiAxNi0xNiAxNnoiLz48L3N2Zz4=" alt="海口镇徽标">
+                <div class="logo-text">海口镇人民政府</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="关于我们.html">关于我们</a></li>
+                <li><a href="政务服务.html">政务服务</a></li>
+                <li><a href="交流互动.html" class="active">交流互动</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- 页面标题 -->
+<div class="page-header">
+    <div class="container">
+        <h1>交流互动</h1>
+    </div>
+</div>
+
+<!-- 主要内容 -->
+<main class="container">
+    <!-- 镇长信箱 -->
+    <section>
+        <h2>镇长信箱</h2>
+        <div class="card">
+            <div class="card-header">给镇长写信</div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="sender">您的游戏ID</label>
+                        <input type="text" id="sender" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">联系方式（游戏内邮箱或Discord）</label>
+                        <input type="text" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="letter-title">信件主题</label>
+                        <input type="text" id="letter-title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="letter-content">信件内容</label>
+                        <textarea id="letter-content" class="form-control" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">发送信件</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 意见征集 -->
+    <section>
+        <h2>意见征集</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">当前征集</div>
+                <div class="card-body">
+                    <ul class="forum-list">
+                        <li>
+                            <a href="#">关于新区命名的意见征集</a>
+                            <div class="forum-meta">截止日期：方块历203年11月30日</div>
+                        </li>
+                        <li>
+                            <a href="#">关于举办新年活动的意见征集</a>
+                            <div class="forum-meta">截止日期：方块历203年12月15日</div>
+                        </li>
+                        <li>
+                            <a href="#">关于公共设施建设的意见征集</a>
+                            <div class="forum-meta">截止日期：方块历203年11月20日</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">往期征集结果</div>
+                <div class="card-body">
+                    <ul class="forum-list">
+                        <li>
+                            <a href="#">"海口镇建筑大赛"主题征集结果公布</a>
+                            <div class="forum-meta">发布日期：方块历203年10月5日</div>
+                        </li>
+                        <li>
+                            <a href="#">"社区活动中心"设计征集结果公布</a>
+                            <div class="forum-meta">发布日期：方块历203年9月12日</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社区论坛 -->
+    <section>
+        <h2>社区论坛</h2>
+        <div class="forum-category">
+            <h3>官方公告</h3>
+            <ul class="forum-list">
+                <li>
+                    <a href="#">海口镇新区规划方案公示</a>
+                    <div class="forum-meta">发布者：海口镇政府 | 回复：15 | 最后更新：2023-10-10</div>
+                </li>
+                <li>
+                    <a href="#">关于维护服务器稳定运行的公告</a>
+                    <div class="forum-meta">发布者：海口镇政府 | 回复：8 | 最后更新：2023-10-05</div>
+                </li>
+            </ul>
+        </div>
+        <div class="forum-category">
+            <h3>建筑交流</h3>
+            <ul class="forum-list">
+                <li>
+                    <a href="#">分享我的新中式建筑</a>
+                    <div class="forum-meta">发布者：建筑爱好者 | 回复：25 | 最后更新：2023-10-12</div>
+                </li>
+                <li>
+                    <a href="#">红石机关设计讨论</a>
+                    <div class="forum-meta">发布者：红石大师 | 回复：42 | 最后更新：2023-10-11</div>
+                </li>
+            </ul>
+        </div>
+        <div class="forum-category">
+            <h3>问题反馈</h3>
+            <ul class="forum-list">
+                <li>
+                    <a href="#">关于农田被破坏的举报</a>
+                    <div class="forum-meta">发布者：农民小王 | 回复：3 | 最后更新：2023-10-09</div>
+                </li>
+                <li>
+                    <a href="#">建议增加更多公共照明</a>
+                    <div class="forum-meta">发布者：夜行者 | 回复：12 | 最后更新：2023-10-08</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 关注我们 -->
+    <section>
+        <h2>关注我们</h2>
+        <div class="card">
+            <div class="card-header">官方服务器信息</div>
+            <div class="card-body">
+                <div class="icon-box">
+                    <i class="fas fa-server"></i>
+                    <div>
+                        <h3>服务器IP</h3>
+                        <p>请见b站</p>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <i class="fab fa-discord"></i>
+                    <div>
+                      <h3>QQ社区</h3>
+                      <p>加入我们的QQ社区获取最新资讯和与玩家交流</p>
+                      <a href="#" class="btn">点击加入</a>
+                    </div>
+                </div>
+                <div class="icon-box">
+                    <i class="fas fa-download"></i>
+                    <div>
+                        <h3>资源下载</h3>
+                        <p>下载游戏资源包，获得游戏体验</p>
+                        <a href="#" class="btn">下载资源包</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <ul class="footer-links">
+                        <li><a href="关于我们.html">海口镇简介</a></li>
+                        <li><a href="关于我们.html">镇政府机构</a></li>
+                        <li><a href="关于我们.html">领导介绍</a></li>
+                        <li><a href="关于我们.html">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>政务服务</h3>
+                    <ul class="footer-links">
+                        <li><a href="政务服务.html">政策文件</a></li>
+                        <li><a href="政务服务.html">办事指南</a></li>
+                        <li><a href="政务服务.html">土地申请</a></li>
+                        <li><a href="政务服务.html">建筑审批</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>交流互动</h3>
+                    <ul class="footer-links">
+                        <li><a href="交流互动.html">镇长信箱</a></li>
+                        <li><a href="交流互动.html">意见征集</a></li>
+                        <li><a href="交流互动.html">社区论坛</a></li>
+                        <li><a href="交流互动.html">关注我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关注我们</h3>
+                    <ul class="footer-links">
+                      <li><a href="#">服务器IP</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+              <p>haikou © 2025 Minecraft海口镇人民政府 版权所有 </p>
+<div class="entertainment-notice">本网站内容纯属虚构，仅供娱乐</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航栏激活状态
+            const currentPage = window.location.href;
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.href === currentPage) {
+                    link.classList.add('active');
+                }
+                
+                link.addEventListener('click', function() {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // 表单提交
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('感谢您的留言！我们会尽快处理。');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
